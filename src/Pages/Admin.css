@@ -1,0 +1,358 @@
+/* ===== ROOT MERAKI COLORS ===== */
+:root {
+  --meraki-dark: #0a1931;
+  --meraki-blue: #1f3b73;
+  --meraki-gold: #f4b63f;
+  --meraki-white: #ffffff;
+  --meraki-soft: #f6f8fc;
+}
+
+/* ===== PAGE BASE ===== */
+.admin-page {
+  background: var(--meraki-soft);
+  min-height: 100vh;
+  padding: 30px;
+  color: var(--meraki-dark);
+}
+
+/* ===== PAGE TITLE ===== */
+.admin-title {
+  font-size: 32px;
+  color: var(--meraki-gold);
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.admin-textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: monospace;
+}
+
+
+/* ===== ADMIN CARD ===== */
+.admin-card {
+  background: var(--meraki-white);
+  padding: 25px;
+  border-radius: 18px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  animation: fadeIn 0.4s ease;
+}
+
+.admin-card h2 {
+  margin-bottom: 18px;
+  color: var(--meraki-blue);
+  font-weight: 700;
+}
+
+/* ===== INPUT ROW ===== */
+.input-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* ===== INPUT ===== */
+.admin-input {
+  flex: 1;
+  padding: 14px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 15px;
+  color: var(--meraki-dark);
+  background: white;
+}
+
+.admin-input::placeholder {
+  color: #888;
+}
+
+/* ===== PRIMARY BUTTON ===== */
+.admin-btn {
+  padding: 13px 26px;
+  background: linear-gradient(90deg, var(--meraki-gold), #ff9f1c);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  color: black;
+  transition: 0.25s;
+}
+
+.admin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+/* ===== TABLE ===== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 14px;
+  background: var(--meraki-blue);
+  color: white;
+  font-size: 15px;
+}
+
+.admin-table td {
+  padding: 14px;
+  border-bottom: 1px solid #ddd;
+  color: var(--meraki-dark);
+  font-size: 15px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.edit-btn,
+.delete-btn {
+  padding: 7px 16px;
+  margin-right: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.edit-btn {
+  background: #43a047;
+  color: white;
+}
+
+.delete-btn {
+  background: #e53935;
+  color: white;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  opacity: 0.85;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .input-row {
+    flex-direction: column;
+  }
+
+  .admin-title {
+    font-size: 24px;
+  }
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================= */
+/* DASHBOARD TITLE */
+/* ============================= */
+
+.admin-page-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #0a1931;
+  margin-bottom: 25px;
+}
+
+/* ============================= */
+/* STATS GRID */
+/* ============================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+/* ============================= */
+/* STAT CARD */
+/* ============================= */
+
+.stat-card {
+  background: linear-gradient(135deg, #0a1931, #1f3b73);
+  border-radius: 16px;
+  padding: 26px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* GOLD GLOW STRIP */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #f4b63f, gold);
+  transition: 0.5s;
+}
+
+.stat-card:hover::before {
+  left: 0;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.45);
+}
+
+/* CARD TEXT */
+.stat-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f4b63f;
+  margin-bottom: 12px;
+}
+
+.stat-card span {
+  font-size: 42px;
+  font-weight: 800;
+  color: white;
+}
+
+/* ============================= */
+/* MOBILE FIX */
+/* ============================= */
+
+@media (max-width: 600px) {
+  .admin-page-title {
+    font-size: 24px;
+  }
+
+  .stat-card span {
+    font-size: 32px;
+  }
+}
+/* DASHBOARD MAIN WRAPPER */
+.dashboard-wrapper {
+  padding: 20px 30px;
+  background: #f4f5fa;
+  min-height: 100vh;
+}
+
+/* TITLE */
+.dash-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0a1a3a;
+  margin-bottom: 25px;
+}
+
+/* STAT BOXES */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 35px;
+}
+
+.stat-box {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0px 6px 15px rgba(0,0,0,0.12);
+  text-align: center;
+  border-left: 5px solid #e4b159;
+  transition: 0.3s;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 22px rgba(0,0,0,0.18);
+}
+
+.stat-box h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #1f3463;
+}
+
+.stat-box p {
+  font-size: 38px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: #0a1a3a;
+}
+
+/* SECTION HEADINGS */
+.section h2 {
+  font-size: 22px;
+  color: #0a1a3a;
+  margin-bottom: 15px;
+}
+
+/* ANNOUNCEMENTS */
+.announcement-list li {
+  background: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* QUICK ACTIONS */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.quick-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: #0a1a3a;
+  border: 2px solid #e4b159;
+  transition: 0.25s;
+}
+
+.quick-card:hover {
+  background: #e4b159;
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* ACTIVITY LOG */
+.activity-box {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+}
+
+.activity-box p {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.activity-box p:last-child {
+  border-bottom: none;
+}
+
+
+

@@ -1,0 +1,36 @@
+.admin-container {
+  min-height: 100vh;
+  padding: 120px 8%;
+  background: #f5f7fb;
+}
+
+.admin-title {
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #1e2b5c;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.admin-card {
+  background: white;
+  padding: 35px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #1e2b5c;
+  font-size: 20px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.admin-card:hover {
+  transform: translateY(-6px);
+  background: #1e2b5c;
+  color: white;
+}

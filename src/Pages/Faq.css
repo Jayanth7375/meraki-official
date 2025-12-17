@@ -1,0 +1,151 @@
+/* ZERO GAP RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HERO */
+.faq-hero {
+  width: 100%;
+  height: 60vh;
+  background: url("../assets/campus.avif") center/cover no-repeat;
+  position: relative;
+}
+
+.faq-overlay {
+  background: rgba(13, 42, 86, 0.85);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.faq-overlay h1 {
+  font-size: 3rem;
+}
+
+.faq-overlay p {
+  opacity: 0.9;
+  margin-top: 10px;
+}
+
+/* SEARCH */
+.faq-search {
+  padding: 40px 10px;
+  text-align: center;
+  background: #f6f9ff;
+}
+
+.faq-search input {
+  width: 90%;
+  max-width: 500px;
+  padding: 14px;
+  border-radius: 50px;
+  border: 2px solid #0d2a56;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* FAQ */
+.faq-section {
+  padding: 60px 8%;
+  background: #ffffff;
+}
+
+.faq-category {
+  margin-bottom: 60px;
+}
+
+.faq-category h2 {
+  color: #0d2a56;
+  margin-bottom: 20px;
+  border-left: 6px solid gold;
+  padding-left: 14px;
+}
+
+/* FAQ ITEM */
+.faq-item {
+  background: #f4f6fb;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq-item:hover {
+  transform: translateY(-3px);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  font-weight: bold;
+  color: #0d2a56;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.4s ease;
+  padding: 0 20px;
+}
+
+.faq-item.open .faq-answer {
+  max-height: 200px;
+  padding-bottom: 20px;
+}
+
+.faq-answer p {
+  color: #333;
+  padding-top: 10px;
+}
+
+/* CTA */
+.faq-cta {
+  background: linear-gradient(135deg, #0d2a56, #1a4cb8);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.faq-cta h2 {
+  font-size: 2.5rem;
+}
+
+.faq-cta p {
+  opacity: 0.9;
+  margin: 15px 0;
+}
+
+.faq-cta button {
+  padding: 14px 40px;
+  background: gold;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.faq-cta button:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .faq-overlay h1 {
+    font-size: 2.2rem;
+  }
+
+  .faq-section {
+    padding: 40px 5%;
+  }
+}
