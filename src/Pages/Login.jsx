@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import logo from "../assets/image.png";
 import "./Auth.css";
+import Antigravity from "../Components/Antigravity";
 
 function Login() {
   const navigate = useNavigate();
@@ -66,8 +67,17 @@ function Login() {
       localStorage.setItem("name", user.name);
 
       // REDIRECT
-      if (user.role === "admin") navigate("/admin");
-      else navigate("/");
+      if (user.role === "admin") {
+        navigate("/admin");
+      } else if (user.role === "faculty") {
+        navigate("/faculty");
+      } else if (user.role === "student") {
+        navigate("/student");
+      } else {
+        navigate("/");
+      }
+
+
     } catch (err) {
       setApiError(
         err.response?.data?.message || "Unable to login. Try again."
@@ -77,6 +87,7 @@ function Login() {
 
   return (
     <div className="auth-page">
+      <Antigravity />
       <div className="auth-card">
         <img src={logo} alt="College Logo" className="auth-logo" />
 
@@ -99,6 +110,15 @@ function Login() {
           >
             Admin
           </button>
+
+          <button
+            type="button"
+            className={selectedRole === "faculty" ? "role-btn active" : "role-btn"}
+            onClick={() => setSelectedRole("faculty")}
+          >
+            Faculty
+          </button>
+
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
@@ -139,6 +159,12 @@ function Login() {
             Register
           </Link>
         </p>
+
+        <div className="auth-links">
+          <Link to="/" className="auth-secondary-link">Back to Home</Link>
+          <span className="divider">|</span>
+          <Link to="/admissions" className="auth-secondary-link">Apply for Admission</Link>
+        </div>
       </div>
     </div>
   );

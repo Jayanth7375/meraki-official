@@ -26,20 +26,39 @@ function Terms() {
   }
 
   const contentText =
-    page?.content?.text ||
-    `
-By accessing Meraki College of Innovation, you agree to follow all terms, policies, and rules stated on this website.
+  page?.content?.text ||
+  `
+Welcome to Meraki College of Innovation. By accessing and using this website, you agree to comply with the following terms and conditions.
 
-Admission is based on merit and eligibility. Submission of application does not guarantee selection.
+Use of Website:
+• The website is intended for academic, informational, and administrative purposes only.
+• Unauthorized use or misuse of the website is strictly prohibited.
 
-Fees once paid are non-refundable except in special conditions approved by the administration.
+Admissions:
+• Admission is granted based on eligibility criteria, merit, and institutional policies.
+• Submission of an application does not guarantee admission.
 
-Students must maintain discipline, academic integrity, and respect all institutional guidelines.
+Fees & Payments:
+• All fees must be paid within the specified timelines.
+• Fees once paid are non-refundable except in special cases approved by the administration.
 
-Any misuse, hacking attempt, or illegal activity will result in legal action.
+Student Responsibilities:
+• Students must maintain academic integrity at all times.
+• Discipline, respectful conduct, and adherence to college rules are mandatory.
 
-The institution reserves the right to modify these terms without prior notice.
+Intellectual Property:
+• All website content, logos, and materials are the property of Meraki College.
+• Reproduction or redistribution without permission is prohibited.
+
+Security & Misuse:
+• Any attempt to hack, disrupt, or misuse the system will result in strict disciplinary and legal action.
+
+Policy Updates:
+• The institution reserves the right to update or modify these terms without prior notice.
+
+By continuing to use this website, you acknowledge and accept these terms and conditions.
 `;
+
 
   return (
     <section className="legal-page">

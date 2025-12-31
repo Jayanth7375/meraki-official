@@ -1,5 +1,21 @@
+:root {
+  /* 🔥 MODERN PALETTE: Deep Space + Electric Violet */
+  --bg-dark: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --primary: #7c3aed;
+  /* Electric Violet */
+  --primary-glow: rgba(124, 58, 237, 0.5);
+  --secondary: #2dd4bf;
+  /* Teal */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
 /* 💀 KILLS ALL DEFAULT WHITE GAPS */
-html, body, #root {
+html,
+body,
+#root {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,6 +24,7 @@ html, body, #root {
   background: #000814;
   font-family: "Poppins", sans-serif;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -15,12 +32,98 @@ html, body, #root {
 }
 
 body {
-  background: white;
-  color: black;
-  font-family: Arial, sans-serif;
+  background: var(--bg-dark);
+  /* ✅ DARK MODE ACTIVE */
+  color: var(--text-main);
+  font-family: "Poppins", sans-serif;
 }
 
 #root {
   min-height: 100vh;
 }
+
+/* 🔥 UTILITIES */
+.text-gradient {
+  background: linear-gradient(135deg, #a78bfa 0%, #2dd4bf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔥 ANIMATIONS */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+/* Global Text Colors for Dark Mode */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main);
+}
+p, span, li {
+  color: var(--text-muted);
+}
+/* Ensure Cards are Dark too (optional, but consistent) */
+.info-card {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--glass-border) !important;
+}
+.auth-card {
+   background: rgba(30, 41, 59, 0.6) !important; /* Specific adjustment for Auth to be glassy dark */
+   color: white !important;
+}
+.auth-title { color: white !important; }
+.auth-subtitle { color: #ccc !important; }
+.auth-field label { color: #ddd !important; }
 

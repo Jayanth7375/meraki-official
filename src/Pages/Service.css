@@ -191,3 +191,119 @@
     font-size: 2rem;
   }
 }
+
+/* ================= CAMPUS & HOSTEL ================= */
+.services-campus {
+  padding: 90px 8%;
+  text-align: center;
+  background: #ffffff;
+}
+
+.services-campus h2 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+}
+
+.services-sub {
+  color: #555;
+  margin-bottom: 50px;
+}
+
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.campus-card {
+  background: #fff;
+  padding: 35px 25px;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0,0,0,.12);
+  transition: 0.4s;
+}
+
+.campus-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 70px rgba(0,0,0,.25);
+}
+
+/* ================= LIBRARY ================= */
+.services-library {
+  padding: 90px 8%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 50px;
+  align-items: center;
+  background: #f7f9ff;
+}
+
+.library-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
+}
+
+.library-content ul {
+  margin-top: 20px;
+  line-height: 2;
+}
+
+.library-visual {
+  font-size: 9rem;
+  text-align: center;
+  animation: float 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+/* ================= STUDENT LIFE ================= */
+.services-life {
+  padding: 90px 8%;
+  background: white;
+  text-align: center;
+}
+
+.services-life h2 {
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+}
+
+.life-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.life-card {
+  background: linear-gradient(135deg, #eef2ff, #ffffff);
+  padding: 30px;
+  border-radius: 16px;
+  font-weight: 600;
+  transition: .35s;
+}
+
+.life-card:hover {
+  transform: scale(1.06);
+  background: linear-gradient(135deg, #1e3558, #15284a);
+  color: white;
+}
+
+/* ================= RESPONSIVE ADDITIONS ================= */
+@media (max-width: 1000px) {
+  .campus-grid { grid-template-columns: repeat(2,1fr); }
+  .services-library { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .campus-grid,
+  .life-grid { grid-template-columns: 1fr; }
+
+  .library-visual {
+    font-size: 6rem;
+  }
+}
+

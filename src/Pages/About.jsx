@@ -31,7 +31,7 @@ function About() {
     fetchAbout();
   }, []);
 
-  // STATS ANIMATION (UNCHANGED)
+  // STATS ANIMATION
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prev) => ({
@@ -63,22 +63,51 @@ function About() {
         </div>
       </section>
 
-      {/* STORY */}
+      {/* OUR STORY */}
       <section className="about-story">
         <div className="story-text">
           <h2>Our Story</h2>
+
           <p>
             {content.story1 ||
-              "Founded with a vision to revolutionize education, Meraki College of Innovation stands at the forefront of academic excellence."}
+              "Meraki College of Innovation was founded with a bold vision — to redefine higher education by blending academic excellence, industry relevance, and innovation-driven learning."}
           </p>
+
           <p>
             {content.story2 ||
-              "With world-class infrastructure, expert faculty, and a student-first approach, we transform classrooms into launchpads for success."}
+              "What began as a small academic initiative has grown into a vibrant institution dedicated to nurturing future-ready professionals. From its inception, Meraki College believed that education must evolve with the world it serves."}
+          </p>
+
+          <p>
+            {content.story3 ||
+              "Over the years, the college has built a strong academic foundation supported by experienced faculty, modern infrastructure, and a student-centric approach. Our programs bridge the gap between theory and real-world application."}
+          </p>
+
+          <p>
+            {content.story4 ||
+              "Beyond academics, Meraki College emphasizes holistic development — fostering leadership, innovation, ethics, and social responsibility to shape confident global citizens."}
           </p>
         </div>
 
         <div className="story-img">
           <img src={aboutImg} alt="Campus" />
+        </div>
+      </section>
+
+      {/* LEADERSHIP & VALUES */}
+      <section className="about-values">
+        <h2>Leadership & Core Values</h2>
+        <p className="about-sub">
+          Driven by purpose, guided by innovation, and committed to excellence.
+        </p>
+
+        <div className="values-grid">
+          <div className="value-card">🎯 Academic Excellence</div>
+          <div className="value-card">🤝 Integrity & Ethics</div>
+          <div className="value-card">🚀 Innovation Mindset</div>
+          <div className="value-card">🌍 Global Perspective</div>
+          <div className="value-card">💡 Student-First Culture</div>
+          <div className="value-card">🏆 Outcome-Driven Education</div>
         </div>
       </section>
 

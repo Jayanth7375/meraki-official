@@ -6,6 +6,7 @@ import "./Admin.css";
 export default function ManageDepartments() {
   const [departments, setDepartments] = useState([]);
   const [dept, setDept] = useState("");
+  const [code, setCode] = useState("");
   const [editId, setEditId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -39,12 +40,14 @@ export default function ManageDepartments() {
         // UPDATE
         await api.put(`/api/departments/${editId}`, {
           name: dept.trim(),
+          code: code.trim(),
           description: dept.trim(),
         });
       } else {
         // CREATE
         await api.post("/api/departments", {
           name: dept.trim(),
+          code: code.trim(),
           description: dept.trim(),
         });
       }
@@ -75,6 +78,7 @@ export default function ManageDepartments() {
 
   const handleEdit = (d) => {
     setDept(d.name);
+    setCode(d.code);
     setEditId(d._id);
   };
 
@@ -94,6 +98,13 @@ export default function ManageDepartments() {
             placeholder="Department Name"
             value={dept}
             onChange={(e) => setDept(e.target.value)}
+          />
+          <input
+            className="admin-input"
+            placeholder="Dept Code (e.g. CSE)"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            style={{ marginLeft: "10px" }}
           />
 
           <button

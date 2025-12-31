@@ -3,6 +3,8 @@ import "./Contact.css";
 import { Link } from "react-router-dom";
 
 
+import api from "../api/axios";
+
 function Contact() {
   const [form, setForm] = useState({
     fname: "",
@@ -14,6 +16,7 @@ function Contact() {
   });
 
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const regex = {
     fname: /^[A-Za-z ]{3,}$/,
@@ -26,7 +29,6 @@ function Contact() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setForm({ ...form, [name]: value });
 
     if (!regex[name].test(value)) {
@@ -36,7 +38,7 @@ function Contact() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (Object.values(errors).some((err) => err !== "")) {
@@ -49,15 +51,23 @@ function Contact() {
       return;
     }
 
-    alert("✅ Message Sent Successfully!");
-    setForm({
-      fname: "",
-      lname: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+    try {
+      setLoading(true);
+      await api.post("/api/contact", form);
+      alert("✅ Message Sent Successfully!");
+      setForm({
+        fname: "",
+        lname: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (err) {
+      alert("Failed to send message: " + (err.response?.data?.message || err.message));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

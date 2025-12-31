@@ -26,18 +26,34 @@ function Privacy() {
   }
 
   const contentText =
-    page?.content?.text ||
-    `
-We collect personal information such as name, email, and phone number when you submit forms.
+  page?.content?.text ||
+  `
+At Meraki College of Innovation, your privacy is extremely important to us. This Privacy Policy outlines how we collect, use, and safeguard your information.
 
-Your data is used strictly for academic communication and admission processes.
+Information We Collect:
+We may collect personal details such as your name, email address, phone number, academic details, and enquiry information when you submit forms on our website.
 
-We implement strict security measures to protect your personal information.
+How We Use Your Information:
+The information collected is used strictly for academic communication, admission processing, student support, and institutional updates.
 
-Our website may use cookies to enhance browsing experience.
+Data Security:
+We implement industry-standard security measures to protect your data from unauthorized access, misuse, or disclosure.
 
-You may request data deletion by contacting the administration.
+Cookies & Tracking:
+Our website may use cookies to improve user experience, analyze website traffic, and personalize content. You can disable cookies in your browser settings.
+
+Third-Party Services:
+We do not sell or share your personal data with third parties except where required by law or for essential academic operations.
+
+Your Rights:
+You have the right to access, update, or request deletion of your personal data at any time by contacting the college administration.
+
+Policy Updates:
+This Privacy Policy may be updated periodically. Any changes will be reflected on this page.
+
+By using our website, you agree to the terms outlined in this Privacy Policy.
 `;
+
 
   return (
     <section className="legal-page">

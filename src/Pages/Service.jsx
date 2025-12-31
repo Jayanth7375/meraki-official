@@ -8,6 +8,7 @@ const fallbackServices = [
   { icon: "🎓", title: "Academic Programs", desc: "B.Tech, MBA, AI & more." },
   { icon: "💼", title: "Career Guidance", desc: "Resume training & interviews." },
   { icon: "🧪", title: "Research Facilities", desc: "Advanced labs & grants." },
+  { icon: "💼", title: "Supportive Placements", desc: "Top-Tier Companies Placements." },
 ];
 
 function Services() {
@@ -83,6 +84,85 @@ function Services() {
           ))}
         </p>
       </section>
+      {/* CAMPUS & HOSTEL */}
+<section className="services-campus">
+  <h2>Campus & Hostel Facilities</h2>
+  <p className="services-sub">
+    Designed to support comfort, safety, and academic focus
+  </p>
+
+  <div className="campus-grid">
+    <div className="campus-card">
+      🏠
+      <h4>Hostel Facilities</h4>
+      <p>
+        Separate hostels for boys and girls with 24/7 security, Wi-Fi,
+        hygienic food, and recreational areas.
+      </p>
+    </div>
+
+    <div className="campus-card">
+      🚌
+      <h4>Transportation</h4>
+      <p>
+        College bus services covering major routes with safe and punctual
+        transport facilities.
+      </p>
+    </div>
+
+    <div className="campus-card">
+      ⚽
+      <h4>Sports & Fitness</h4>
+      <p>
+        Indoor and outdoor sports facilities, gymnasium, and wellness
+        programs for holistic development.
+      </p>
+    </div>
+
+    <div className="campus-card">
+      🏥
+      <h4>Medical Support</h4>
+      <p>
+        On-campus medical care with emergency support and regular health
+        checkups.
+      </p>
+    </div>
+  </div>
+</section>
+{/* LIBRARY */}
+<section className="services-library">
+  <div className="library-content">
+    <h2>Library & Learning Resources</h2>
+    <p>
+      Our modern digital library supports academic excellence through
+      extensive physical and online resources.
+    </p>
+
+    <ul>
+      <li>✔ 50,000+ books & journals</li>
+      <li>✔ Digital library access (IEEE, Springer, etc.)</li>
+      <li>✔ 24/7 reading halls</li>
+      <li>✔ E-learning & research databases</li>
+    </ul>
+  </div>
+
+  <div className="library-visual">
+    📖
+  </div>
+</section>
+{/* STUDENT LIFE */}
+<section className="services-life">
+  <h2>Student Life & Support</h2>
+
+  <div className="life-grid">
+    <div className="life-card">🎭 Cultural Clubs</div>
+    <div className="life-card">🤝 Mentorship Programs</div>
+    <div className="life-card">💡 Innovation & Startup Cell</div>
+    <div className="life-card">🧠 Counseling & Guidance</div>
+    <div className="life-card">🌍 Global Exchange Programs</div>
+    <div className="life-card">📢 Student Communities</div>
+  </div>
+</section>
 
       {/* CTA */}
       <section className="services-cta">

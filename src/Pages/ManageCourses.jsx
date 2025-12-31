@@ -6,8 +6,11 @@ import "./Admin.css";
 export default function ManageCourses() {
   const [courses, setCourses] = useState([]);
   const [departments, setDepartments] = useState([]);
+  const [staffList, setStaffList] = useState([]);
   const [course, setCourse] = useState("");
   const [deptId, setDeptId] = useState("");
+  const [selectedFaculty, setSelectedFaculty] = useState("");
+  const [credits, setCredits] = useState(4); // Default 4
   const [editId, setEditId] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -19,15 +22,17 @@ export default function ManageCourses() {
   const fetchInitialData = async () => {
     try {
       setLoading(true);
-      const [courseRes, deptRes] = await Promise.all([
+      const [courseRes, deptRes, staffRes] = await Promise.all([
         api.get("/api/courses"),
         api.get("/api/departments"),
+        api.get("/api/staff"),
       ]);
 
       setCourses(courseRes.data);
       setDepartments(deptRes.data);
+      setStaffList(staffRes.data); // Store all staff
     } catch (err) {
-      setError("Failed to load courses or departments");
+      setError("Failed to load data");
     } finally {
       setLoading(false);
     }
@@ -39,26 +44,39 @@ export default function ManageCourses() {
       return;
     }
 
+    // Find department name from selected ID
+    const selectedDept = departments.find(d => d._id === deptId);
+    const departmentName = selectedDept ? selectedDept.name : "";
+
+    if (!departmentName) {
+      alert("Invalid Department Selected");
+      return;
+    }
+
     try {
       setLoading(true);
 
+      const payload = {
+        name: course.trim(),
+        department: departmentName,
+        faculty: selectedFaculty || null,
+        credits: parseInt(credits) || 4
+      };
+
       if (editId) {
-        await api.put(`/api/courses/${editId}`, {
-          name: course.trim(),
-          departmentId: deptId,
-        });
+        await api.put(`/api/courses/${editId}`, payload);
       } else {
-        await api.post("/api/courses", {
-          name: course.trim(),
-          departmentId: deptId,
-        });
+        await api.post("/api/courses", payload);
       }
 
       setCourse("");
       setDeptId("");
+      setSelectedFaculty("");
+      setCredits(4);
       setEditId(null);
       fetchInitialData();
     } catch (err) {
+      console.error("Course submit error:", err);
       alert(err.response?.data?.message || "Operation failed");
     } finally {
       setLoading(false);
@@ -67,9 +85,15 @@ export default function ManageCourses() {
 
   const handleEdit = (c) => {
     setCourse(c.name);
-    setDeptId(c.departmentId?._id);
+    const dept = departments.find(d => d.name === c.department);
+    setDeptId(dept ? dept._id : "");
+    setSelectedFaculty(c.faculty || ""); // Populate Faculty
+    setCredits(c.credits || 4);
     setEditId(c._id);
   };
+
+  // Show ALL faculty (relaxed filter) to avoid "Empty" issues
+  const availableFaculty = staffList;
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this course?")) return;
@@ -116,6 +140,32 @@ export default function ManageCourses() {
             ))}
           </select>
 
+          {/* FACULTY SELECTOR */}
+          <select
+            className="admin-input"
+            value={selectedFaculty}
+            onChange={(e) => setSelectedFaculty(e.target.value)}
+          >
+            <option value="">Assign Faculty (Optional)</option>
+            {availableFaculty.map((s) => (
+              <option key={s._id} value={s.user}> {/* Use User ID, not Staff ID */}
+                {s.name} ({s.department}) {/* Show Dept in Label */}
+              </option>
+            ))}
+          </select>
+
+          {/* CREDITS INPUT */}
+          <input
+            className="admin-input"
+            type="number"
+            placeholder="Credits/Periods"
+            value={credits}
+            onChange={(e) => setCredits(e.target.value)}
+            min="1"
+            max="10"
+            style={{ width: "80px" }}
+          />
+
           <button
             className="admin-btn"
             onClick={handleAddOrUpdate}
@@ -147,7 +197,7 @@ export default function ManageCourses() {
               courses.map((c) => (
                 <tr key={c._id}>
                   <td>{c.name}</td>
-                  <td>{c.departmentId?.name || "-"}</td>
+                  <td>{c.department || "-"}</td>
                   <td>
                     <button
                       className="edit-btn"
