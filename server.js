@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
 
 import authRoutes from "./routes/auth.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
@@ -40,4 +42,14 @@ app.listen(PORT, () => {
 });
 
 app.use('/api/contact', contactRoutes);
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Serve static files from the frontend build directory
+app.use(express.static(path.join(__dirname, "dist")));
+
+// Handle client-side routing by serving index.html for all other routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
+});
 
