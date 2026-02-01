@@ -45,52 +45,54 @@ export default function ManageApplications() {
             <h1 className="admin-title">Review Applications</h1>
 
             <div className="admin-card">
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell><strong>Applicant</strong></TableCell>
-                            <TableCell><strong>Department</strong></TableCell>
-                            <TableCell><strong>Marks / Cutoff</strong></TableCell>
-                            <TableCell><strong>Status</strong></TableCell>
-                            <TableCell align="right"><strong>Actions</strong></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {applications.map((app) => (
-                            <TableRow key={app._id}>
-                                <TableCell>
-                                    <div>{app.name}</div>
-                                    <div style={{ fontSize: "0.8rem", color: "#666" }}>{app.email}</div>
-                                    <div style={{ fontSize: "0.8rem", color: "#666" }}>{app.phone}</div>
-                                </TableCell>
-                                <TableCell>{app.department}</TableCell>
-                                <TableCell>
-                                    <div>Marks: <strong>{app.marks}</strong></div>
-                                    <div>Cutoff: <strong>{app.cutoff}</strong></div>
-                                </TableCell>
-                                <TableCell>
-                                    <Chip
-                                        label={app.status}
-                                        color={app.status === "Approved" ? "success" : app.status === "Rejected" ? "error" : "warning"}
-                                        variant="outlined"
-                                    />
-                                </TableCell>
-                                <TableCell align="right">
-                                    {app.status === "Pending" && (
-                                        <>
-                                            <IconButton color="success" onClick={() => updateStatus(app._id, "Approved")}>
-                                                <ApproveIcon />
-                                            </IconButton>
-                                            <IconButton color="error" onClick={() => updateStatus(app._id, "Rejected")}>
-                                                <RejectIcon />
-                                            </IconButton>
-                                        </>
-                                    )}
-                                </TableCell>
+                <div className="table-container">
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell><strong>Applicant</strong></TableCell>
+                                <TableCell><strong>Department</strong></TableCell>
+                                <TableCell><strong>Marks / Cutoff</strong></TableCell>
+                                <TableCell><strong>Status</strong></TableCell>
+                                <TableCell align="right"><strong>Actions</strong></TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHead>
+                        <TableBody>
+                            {applications.map((app) => (
+                                <TableRow key={app._id}>
+                                    <TableCell>
+                                        <div>{app.name}</div>
+                                        <div style={{ fontSize: "0.8rem", color: "#666" }}>{app.email}</div>
+                                        <div style={{ fontSize: "0.8rem", color: "#666" }}>{app.phone}</div>
+                                    </TableCell>
+                                    <TableCell>{app.department}</TableCell>
+                                    <TableCell>
+                                        <div>Marks: <strong>{app.marks}</strong></div>
+                                        <div>Cutoff: <strong>{app.cutoff}</strong></div>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Chip
+                                            label={app.status}
+                                            color={app.status === "Approved" ? "success" : app.status === "Rejected" ? "error" : "warning"}
+                                            variant="outlined"
+                                        />
+                                    </TableCell>
+                                    <TableCell align="right">
+                                        {app.status === "Pending" && (
+                                            <>
+                                                <IconButton color="success" onClick={() => updateStatus(app._id, "Approved")}>
+                                                    <ApproveIcon />
+                                                </IconButton>
+                                                <IconButton color="error" onClick={() => updateStatus(app._id, "Rejected")}>
+                                                    <RejectIcon />
+                                                </IconButton>
+                                            </>
+                                        )}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </div>
         </AdminLayout>
     );

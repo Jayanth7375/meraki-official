@@ -179,44 +179,46 @@ export default function ManageCourses() {
       <div className="admin-card">
         <h2>Course List</h2>
 
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Course</th>
-              <th>Department</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {courses.length === 0 ? (
+        <div className="table-container">
+          <table className="admin-table">
+            <thead>
               <tr>
-                <td colSpan="3">No courses found</td>
+                <th>Course</th>
+                <th>Department</th>
+                <th>Actions</th>
               </tr>
-            ) : (
-              courses.map((c) => (
-                <tr key={c._id}>
-                  <td>{c.name}</td>
-                  <td>{c.department || "-"}</td>
-                  <td>
-                    <button
-                      className="edit-btn"
-                      onClick={() => handleEdit(c)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDelete(c._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+            </thead>
+
+            <tbody>
+              {courses.length === 0 ? (
+                <tr>
+                  <td colSpan="3">No courses found</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                courses.map((c) => (
+                  <tr key={c._id}>
+                    <td>{c.name}</td>
+                    <td>{c.department || "-"}</td>
+                    <td>
+                      <button
+                        className="edit-btn"
+                        onClick={() => handleEdit(c)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDelete(c._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </AdminLayout>
   );

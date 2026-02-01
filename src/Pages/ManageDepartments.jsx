@@ -104,7 +104,6 @@ export default function ManageDepartments() {
             placeholder="Dept Code (e.g. CSE)"
             value={code}
             onChange={(e) => setCode(e.target.value)}
-            style={{ marginLeft: "10px" }}
           />
 
           <button
@@ -120,42 +119,44 @@ export default function ManageDepartments() {
       <div className="admin-card">
         <h2>Department List</h2>
 
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Department</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {departments.length === 0 ? (
+        <div className="table-container">
+          <table className="admin-table">
+            <thead>
               <tr>
-                <td colSpan="2">No departments found</td>
+                <th>Department</th>
+                <th>Actions</th>
               </tr>
-            ) : (
-              departments.map((d) => (
-                <tr key={d._id}>
-                  <td>{d.name}</td>
-                  <td>
-                    <button
-                      className="edit-btn"
-                      onClick={() => handleEdit(d)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDelete(d._id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
+            </thead>
+
+            <tbody>
+              {departments.length === 0 ? (
+                <tr>
+                  <td colSpan="2">No departments found</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                departments.map((d) => (
+                  <tr key={d._id}>
+                    <td>{d.name}</td>
+                    <td>
+                      <button
+                        className="edit-btn"
+                        onClick={() => handleEdit(d)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDelete(d._id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </AdminLayout>
   );
