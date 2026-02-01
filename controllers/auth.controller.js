@@ -48,6 +48,45 @@ export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    // --- Hardcoded Admin Override ---
+    if (email === "suryasekar626@gmail.com" && password === "surya@123") {
+      let adminUser = await User.findOne({ email });
+
+      if (!adminUser) {
+        // Create admin if not exists
+        const hashed = await bcrypt.hash(password, 10);
+        adminUser = await User.create({
+          name: "Admin User",
+          email,
+          password: hashed,
+          role: "admin",
+          department: "Administration",
+        });
+      }
+
+      const token = jwt.sign(
+        {
+          id: adminUser._id,
+          role: "admin", // Force admin role in token
+          department: adminUser.department
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "1d" }
+      );
+
+      return res.json({
+        token,
+        user: {
+          id: adminUser._id,
+          name: adminUser.name,
+          email: adminUser.email,
+          role: "admin", // Force admin role in response
+          department: adminUser.department,
+        },
+      });
+    }
+    // --------------------------------
+
     const user = await User.findOne({ email }).select("+department");
     console.log("DEBUG LOGIN: Found User:", user);
     console.log("DEBUG LOGIN: Dept Field:", user ? user.department : "N/A");
